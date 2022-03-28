@@ -16,15 +16,16 @@ const seedDatabase = async () => {
     author_name VARCHAR(50),
     university VARCHAR(50),
     date_of_birth DATE,
-    h_index VARCHAR(20),
+    h_index INT,
     gender ENUM('m', 'f'),
-    PRIMARY KEY(author_no),
-    INDEX (h_index))`;
+    PRIMARY KEY(author_no)
+    `;
 
   const ADD_MENTOR_FK = `
   ALTER TABLE authors 
   ADD COLUMN mentor INT,
-  ADD CONSTRAINT fk_mentor FOREIGN KEY (mentor) REFERENCES authors(author_no)`;
+  ADD CONSTRAINT fk_mentor FOREIGN KEY (mentor) REFERENCES authors(author_no)
+  `;
 
   try {
     await execQuery("DROP DATABASE IF EXISTS week2");
