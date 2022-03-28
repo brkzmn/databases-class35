@@ -10,7 +10,8 @@ const connection = mysql.createConnection({
 const execQuery = util.promisify(connection.query.bind(connection));
 
 const seedDatabase = async () => {
-  const CREATE_AUTHORS_TABLE = `CREATE TABLE authors (
+  const CREATE_AUTHORS_TABLE = `
+  CREATE TABLE authors (
     author_no INT,
     author_name VARCHAR(50),
     university VARCHAR(50),
@@ -20,12 +21,12 @@ const seedDatabase = async () => {
     PRIMARY KEY(author_no),
     INDEX (h_index))`;
 
-  const ADD_MENTOR_FK = `ALTER TABLE authors 
+  const ADD_MENTOR_FK = `
+  ALTER TABLE authors 
   ADD COLUMN mentor INT,
   ADD CONSTRAINT fk_mentor FOREIGN KEY (mentor) REFERENCES authors(author_no)`;
 
   try {
-    // call the function that returns promise
     await execQuery("DROP DATABASE IF EXISTS week2");
     await execQuery("CREATE DATABASE week2");
     await execQuery("USE week2");
