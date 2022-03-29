@@ -5,7 +5,6 @@ export const authorsData = [
     date_of_birth: "1964-08-20",
     h_index: 5,
     gender: "m",
-    mentor: 1,
   },
   {
     author_name: "Enise Unique",
@@ -37,7 +36,6 @@ export const authorsData = [
     date_of_birth: "1963-04-12",
     h_index: 30,
     gender: "f",
-    mentor: 3,
   },
   {
     author_name: "Desmond Eagle",
@@ -69,7 +67,7 @@ export const authorsData = [
     date_of_birth: "1971-04-26",
     h_index: 38,
     gender: "m",
-    mentor: 7,
+    mentor: 8,
   },
   {
     author_name: "Spruce Springclean",
@@ -93,7 +91,7 @@ export const authorsData = [
     date_of_birth: "1967-12-24",
     h_index: 45,
     gender: "f",
-    mentor: 1,
+    mentor: 3,
   },
   {
     author_name: "Angela Shyla",
@@ -117,6 +115,6 @@ export const authorsData = [
     date_of_birth: "1980-08-20",
     h_index: 33,
     gender: "f",
-    mentor: 10,
+    mentor: 13,
   },
 ];

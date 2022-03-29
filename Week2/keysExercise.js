@@ -23,8 +23,8 @@ const seedDatabase = async () => {
 
   const ADD_MENTOR_FK = `
   ALTER TABLE authors 
-  ADD COLUMN mentor INT,
-  ADD CONSTRAINT fk_mentor FOREIGN KEY (mentor) REFERENCES authors(author_no)`;
+    ADD COLUMN mentor INT,
+    ADD CONSTRAINT fk_mentor FOREIGN KEY (mentor) REFERENCES authors(author_no)`;
 
   try {
     await execQuery("DROP DATABASE IF EXISTS week2");
