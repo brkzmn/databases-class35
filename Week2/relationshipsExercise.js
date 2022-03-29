@@ -26,6 +26,10 @@ const seedDatabase = async () => {
         ADD COLUMN author INT,
         ADD CONSTRAINT fk_author FOREIGN KEY (author) REFERENCES authors(author_no)
     `;
+  const ADD_PAPERS_COLUMN = `
+    ALTER TABLE authors
+        ADD COLUMN papers INT,
+        ADD CONSTRAINT fk_papers FOREIGN KEY (papers) REFERENCES research_Papers(paper_id)`;
 
   try {
     await execQuery("DROP TABLE IF EXISTS research_Papers");
@@ -37,6 +41,7 @@ const seedDatabase = async () => {
     researchPapersData.forEach(async (paper) => {
       await execQuery("INSERT INTO research_Papers SET ?", paper);
     });
+    await execQuery(ADD_PAPERS_COLUMN);
   } catch (error) {
     console.error(error);
     connection.end();
