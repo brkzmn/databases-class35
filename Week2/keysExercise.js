@@ -12,7 +12,7 @@ const execQuery = util.promisify(connection.query.bind(connection));
 const seedDatabase = async () => {
   const CREATE_AUTHORS_TABLE = `
   CREATE TABLE authors (
-    author_no INT AUTO_INCREMENT,
+    author_no INT,
     author_name VARCHAR(50),
     university VARCHAR(50),
     date_of_birth DATE,
