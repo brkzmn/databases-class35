@@ -1,0 +1,62 @@
+1 ) - food_code and food_description columns violate 1NF, because each column should have an atomic value.
+    - Dates were entered differently in the dinner_date column. This violates the rule that specifies columns domain should not change.
+
+2) It can be exracted from diner_date how many days ago this diner was eaten.
+
+
+3 )- It is necessary to create a primary key for 3NF. 4 main tables can be created as customers, dinners, venues and foods. As I designed below, the conditions of 2NF(no partial dependency) and 3NF(no transitive dependency) are met.
+
+members
++---------------+-------------+----------------+
+| member_id(PK) | member_name | member_address |
++---------------+-------------+----------------+
+| 1             | Amit        | 325 Max park   |
+| 2             | Ben         | 24 Hudson lane |
+...
+
+dinners
++--------------+-------------+------------+
+| dinner_id(PK)| dinner_date | venue_code |
++--------------+-------------+------------+
+| D00001001    | 2020/03/15  | B01        |
+| D00001002    | 2020/03/15  | B02        |
+...
+    A new id must be given for each dinner
+
+venues
++---------------+-------------------+
+| venue_code(PK)| venue_description |
++---------------+-------------------+
+| B01           | Grand Ball Room   |
+| B02           | Zoku Roof Top     |
+...
+    venue_description is dependent on venue_code. venue_code also depends on dinner_id. There should be no transitive dependency for non-prime attributes in 3NF. Therefore I placed the venue_description in a separate table.
+
+foods
++--------------+------------------+
+| food_code(PK)| food_description |
++--------------+------------------+
+| C1           | Curry            |
+| C2           | Cake             | 
+...
+
+To record dinners eaten by a member, the association table:
+
+member_dinner_bridge
++---------------+----------------+
+| member_id(FK) | dinner_id (FK) |    
++---------------+----------------+
+| 1             | D00001001     |
+...
+member_id and dinner_id together form PK.
+
+
+The association table showing which foods are eaten at a dinner:
+
+dinner_food_bridge
++---------------+------------------+
+| dinner_id(FK) | food_code(FK)|   |
++---------------+------------------+
+| D00001001     | C1               |  
+| D00001001     | C2               |
+...  
