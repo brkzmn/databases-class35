@@ -1,0 +1,5 @@
+
+- I could not run the commands given in Mysql. I got this error: ERROR 1290 (HY000). Although I struggled for a long time for declaring new value for @@GLOBAL.secure_file_priv but I could not.
+- Therefore, I exported the city table as cvs file with sequel Ace.
+- Then I created the "world" database with MongoDB Compass and I created the collection named "city" in it.
+- Then I installed mongodb package in Node.JS and created a function for CRUD operations.
