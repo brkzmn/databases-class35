@@ -12,19 +12,19 @@ const execQuery = util.promisify(connection.query.bind(connection));
 const seedDatabase = async () => {
   const CREATE_AUTHORS_TABLE = `
   CREATE TABLE authors (
-    author_no INT,
+    author_id INT,
     author_name VARCHAR(50),
     university VARCHAR(50),
     date_of_birth DATE,
     h_index INT,
     gender ENUM('m', 'f'),
-    PRIMARY KEY(author_no)
+    PRIMARY KEY(author_id)
     )`;
 
   const ADD_MENTOR_FK = `
   ALTER TABLE authors 
-    ADD COLUMN mentor INT,
-    ADD CONSTRAINT fk_mentor FOREIGN KEY (mentor) REFERENCES authors(author_no)`;
+    ADD COLUMN mentor INT DEFAULT NULL,
+    ADD CONSTRAINT fk_mentor FOREIGN KEY (mentor) REFERENCES authors(author_id)`;
 
   try {
     await execQuery("DROP DATABASE IF EXISTS week2");
