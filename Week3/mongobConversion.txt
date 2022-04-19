@@ -2,4 +2,17 @@
 - I could not run the commands given in Mysql. I got this error: ERROR 1290 (HY000). Although I struggled for a long time for declaring new value for @@GLOBAL.secure_file_priv but I could not.
 - Therefore, I exported the city table as cvs file with sequel Ace.
 - Then I created the "world" database with MongoDB Compass and I created the collection named "city" in it.
+- I uploaded the city collection in the local to the database via MongoDB Compass.
 - Then I installed mongodb package in Node.JS and created a function for CRUD operations.
+    - First I installed mongodb package in Node.JS with `npm i mongodb` command.
+    - Then I created a new MongoClient with the new operator.
+    - Then inside the async function:
+        - I created a connection between the database and the app with the client.connect() method.
+        - I chose the related collection with the client.db().collection() method.
+        - I added a new city with the collection.insertOne() method. "create operation"
+        - With the collection.updateOne() method, I found the id of the city added to the collection later and updated the population property. "update operation"
+        -  I accessed the relevant city through the Name property with the collection.findOne() method. "read operation"
+        - I deleted the city from the collection with the collection.deleteMany() method. I used deleteMany() instead of deleteOne() in case more than one city was added. "delete operation"
+    - I ended the connection with client.close().
+    - Since this operation is performed with an async function, I chained the catch() method to the function call to catch potential errors.
+

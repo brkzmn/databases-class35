@@ -1,7 +1,7 @@
 1 ) - food_code and food_description columns violate 1NF, because each column should have an atomic value.
     - Dates were entered differently in the dinner_date column. This violates the rule that specifies columns domain should not change.
 
-2) It can be exracted from diner_date how many days ago this diner was eaten.
+2) We can find Member, Venue and Food entities. 
 
 
 3 )- It is necessary to create a primary key for 3NF. 4 main tables can be created as customers, dinners, venues and foods. As I designed below, the conditions of 2NF(no partial dependency) and 3NF(no transitive dependency) are met.
@@ -50,6 +50,14 @@ member_dinner_bridge
 ...
 member_id and dinner_id together form PK.
 
+To record foods eaten at each venue
+
++---------------+----------------+
+| venue_code(FK)| food_code (FK) |    
++---------------+----------------+
+| B01           | C1             |
+| B01           | C2             |   
+...
 
 The association table showing which foods are eaten at a dinner:
 

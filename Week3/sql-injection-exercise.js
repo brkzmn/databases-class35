@@ -38,34 +38,45 @@ function getPopulation(table_name, country_name, country_code, showResults) {
   connection.query(
     `SELECT Population FROM ${table_name} WHERE Name = '${country_name}' and code = '${country_code}'`,
     function (err, result) {
-      if (err) showResults(err);
-      if (result.length == 0) showResults(new Error("Not found"));
+      if (err) {
+        showResults(err)
+      };
+
+      if (result.length == 0) {
+        showResults(new Error("Not found"))
+      };
+
       showResults(null, result);
     }
   );
 }
 
 // sanitize query by using  a question mark syntax
-const sanitizedGetPopulation = (
-  table_name,
-  country_name,
-  country_code,
-  showResults
-) => {
+const sanitizedGetPopulation = (table_name, country_name, country_code, showResults) => {
   const sanitizedQuery =
     `SELECT Population FROM ${table_name} WHERE Name =` +
     connection.escape(country_name) +
     "AND Code =" +
     connection.escape(country_code);
+    
   connection.query(sanitizedQuery, function (err, result) {
-    if (err) showResults(err);
-    if (result.length == 0) showResults(new Error("Not found"));
+    if (err) {
+      showResults(err)
+    };
+
+    if (result.length == 0) {
+      showResults(new Error("Not found"))
+    };
+
     showResults(null, result);
   });
 };
 
 const showResults = (error, results) => {
-  if (error) throw error;
+  if (error) {
+    throw error
+  };
+
   console.log(results);
 };
 
